@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link type="text/css" href="1.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <h1>My header</h1>
+    </header>
+    <main>
+        <nav><a href="https://www.google.com.ua">Google</a> | <a href="https://www.youtube.com">YouTube</a></nav>
+        <arcticle>Article</arcticle>
+        <aside>
+            <p>Aside 1</p>
+            <p>Aside 2</p>
+            <p>Aside 3</p>
+        </aside>
+        </br>
+        <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/ogg; codecs=vorbis">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Тег audio не поддерживается вашим браузером.
+        </audio>
+        <p dir="ltr">This arabic word <bdi>ARABIC_PLACEHOLDER</bdi> is in bdi</p>
+        <canvas id="myCanvas" width="200" height="100"></canvas>
+        <p><input list="num">
+            <datalist id="num">
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+            </datalist>
+        </p>
+        <details>
+            <summary>Details</summary>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+        </details>
+        <div><button id="openDialog">Открыть окно</button></div>
+        <dialog>
+            <p>This is dialog</p>
+            <p><button id="closeDialog">Закрыть окно</button></p>
+        </dialog>
+        <embed src="https://i.ibb.co/QFLYTq2/mark-2-80.jpg" width="400" height="300" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+        <figure>
+            <p><img src="https://i.ibb.co/mFn75H0/zaz.jpg" alt="zaz"></p>
+            <figcaption>Zaz</figcaption>
+        </figure>
+        <figure>
+            <p><img src="https://i.ibb.co/cvJwz8s/gaz.jpg" alt="gaz"></p>
+            <figcaption>Gaz</figcaption>
+        </figure>
+    </main>
+    <mark>Marked text</mark>
+    <p>Meter</p>
+    <meter value="0" max="100" low="10" high="60">1</meter>
+    <meter value="30" max="100" low="10" high="60">2</meter>
+    <meter value="80" max="100" low="10" high="60">3</meter>
+    <meter value="100" max="100">4</meter>
+    <form oninput="result.value=(cm.value/2.54).toFixed(2)">
+        <p>Введите длину в сантиметрах:
+            <input type="number" name="cm" autofocus></p>
+        <p>Длина в дюймах: <output name="result">0</output></p>
+    </form>
+    ​
+    <picture>
+        <img src="https://i.ibb.co/cvJwz8s/gaz.jpg" alt="gaz">
+    </picture>
+    </br>
+    <progress max="100" value="25">
+    <span id="value">25</span>%
+      </progress>
+    <footer>
+        Footer
+    </footer>
+    <section>
+        <h1>Съёмки фильма Полипропилен</h1>
+        <p>История о том, как снимали фильм, где герои отдыхали на пляже, потом пришёл антагонист, избил протагонистов, сбросил их в бассейн, и что из этого получилось.</p>
+    </section>
+    <section>
+        <h1>Хороший язык</h1>
+        <p>История о том, как проходила студия изучения языка эсперанто, в то время, как над ней, на веранде велась студия приколистов, где травились анекдоты, и что из этого получилось.</p>
+    </section>
+</body>
+
+<script>
+    const c = document.getElementById("myCanvas");
+    const ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.stroke();
+
+    const dialog = document.querySelector('dialog');
+    document.querySelector('#openDialog').onclick = function() {
+        dialog.show();
+        document.getElementById("openDialog").hidden = true;
+    }
+    document.querySelector('#closeDialog').onclick = function() {
+        dialog.close();
+        document.getElementById("openDialog").hidden = false;
+    }
+</script>
+
+</html>

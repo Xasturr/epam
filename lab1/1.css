@@ -1,0 +1,25 @@
+aside {
+    background: red;
+    padding: 0px;
+    width: 200px;
+    float: right;
+    color: white;
+}
+
+figure {
+    background: #d9dabb;
+    display: block;
+    width: 250px;
+    height: 290px;
+    float: left;
+    margin: 0 10px 10px 0;
+    text-align: center;
+}
+
+figure img {
+    border: 2px solid #8b8e4b;
+}
+
+figure p {
+    margin-bottom: 0;
+}
