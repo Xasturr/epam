@@ -23,3 +23,8 @@ figure img {
 figure p {
     margin-bottom: 0;
 }
+
+#text {
+    color: Red;
+    font-size: 100px;
+}
