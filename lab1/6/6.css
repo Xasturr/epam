@@ -1,0 +1,87 @@
+.container {
+    float: left;
+}
+
+.content1 {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.content2 {
+    position: absolute;
+    left: 275px;
+    top: 0px;
+}
+
+.content3 {
+    position: absolute;
+    left: 550px;
+    top: 0px;
+}
+
+.content4 {
+    position: absolute;
+    left: 825px;
+    top: 0px;
+}
+
+.content4 {
+    position: absolute;
+    left: 825px;
+    top: 0px;
+}
+.content5 {
+    position: absolute;
+    left: 0px;
+    top: 183px;
+}
+
+.content6 {
+    position: absolute;
+    left: 0px;
+    top: 366px;
+}
+
+.content7 {
+    position: absolute;
+    left: 275px;
+    top: 183px;
+    width: 550px;
+}
+
+.content8 {
+    position: absolute;
+    left: 825px;
+    top: 183px;
+}
+
+.content9 {
+    position: absolute;
+    left: 825px;
+    top: 366px;
+}
+
+.content10 {
+    position: absolute;
+    left: 0px;
+    top: 549px;
+}
+
+.content11 {
+    position: absolute;
+    left: 275px;
+    top: 549px;
+}
+
+.content12 {
+    position: absolute;
+    left: 550px;
+    top: 549px;
+}
+
+.content13 {
+    position: absolute;
+    left: 825px;
+    top: 549px;
+}
