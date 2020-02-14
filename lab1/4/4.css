@@ -76,6 +76,7 @@ tr {
 img {
     float: center;
     width: 250px;
+    filter: grayscale(100%);
 }
 
 figure {
