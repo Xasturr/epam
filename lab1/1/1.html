@@ -45,7 +45,8 @@
             <p>This is dialog</p>
             <p><button id="closeDialog">Закрыть окно</button></p>
         </dialog>
-        <embed src="https://i.ibb.co/QFLYTq2/mark-2-80.jpg" width="400" height="300" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+        <embed src="https://i.ibb.co/QFLYTq2/mark-2-80.jpg" width="400" height="300"
+            type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
         <figure>
             <p><img src="https://i.ibb.co/mFn75H0/zaz.jpg" alt="zaz"></p>
             <figcaption>Zaz</figcaption>
@@ -74,16 +75,15 @@
     <progress max="100" value="25">
         <span id="value">25</span>%
     </progress>
-    <footer>
-        Footer
-    </footer>
     <section>
         <h1>Съёмки фильма Полипропилен</h1>
-        <p>История о том, как снимали фильм, где герои отдыхали на пляже, потом пришёл антагонист, избил протагонистов, сбросил их в бассейн, и что из этого получилось.</p>
+        <p>История о том, как снимали фильм, где герои отдыхали на пляже, потом пришёл антагонист, избил протагонистов,
+            сбросил их в бассейн, и что из этого получилось.</p>
     </section>
     <section>
         <h1>Хороший язык</h1>
-        <p>История о том, как проходила студия изучения языка эсперанто, в то время, как над ней, на веранде велась студия приколистов, где травились анекдоты, и что из этого получилось.</p>
+        <p>История о том, как проходила студия изучения языка эсперанто, в то время, как над ней, на веранде велась
+            студия приколистов, где травились анекдоты, и что из этого получилось.</p>
     </section>
     <details>
         <summary>Click to reveal fun facts!</summary>
@@ -99,11 +99,14 @@
 
     <video width="500" height="400" controls preload="metadata">
         <source src="video.mp4" type="video/mp4">
-        <track kind="subtitles" src="english.vtt" srclang="en" label="English">
+        <track kind="subtitles" src="english.srt" srclang="en" label="English">
         <track kind="subtitles" src="ukranian.vtt" srclang="uk" label="Українська">
         Тег video не поддерживается вашим браузером.
     </video>
     <p id="text">метоксихлор<wbr>диэтиламино<wbr>метил<wbr>бутил<wbr>амино<wbr>акридин</p>
+        <footer>
+            Footer
+        </footer>
 </body>
 
 <script>
@@ -116,11 +119,11 @@
     ctx.stroke();
 
     const dialog = document.querySelector('dialog');
-    document.querySelector('#openDialog').onclick = function() {
+    document.querySelector('#openDialog').onclick = function () {
         dialog.show();
         document.getElementById("openDialog").hidden = true;
     }
-    document.querySelector('#closeDialog').onclick = function() {
+    document.querySelector('#closeDialog').onclick = function () {
         dialog.close();
         document.getElementById("openDialog").hidden = false;
     }
