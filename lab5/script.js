@@ -33,7 +33,6 @@ getHttp(url)
             img.alt = 'image';
             img.style = 'margin: auto; margin-bottom: 80px';
             picture.appendChild(img);
-            // console.log(element.picture.large);
         });
     })
     .catch(err => {
