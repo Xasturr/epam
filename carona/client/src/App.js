@@ -14,7 +14,7 @@ export default class App extends Component {
           <Navbar />
           <br />
           <Switch>
-            <Route exaxt path="/" component={Home} />
+            <Route exaxt path="/home" component={Home} />
           </Switch>
         </div>
       </Router >
