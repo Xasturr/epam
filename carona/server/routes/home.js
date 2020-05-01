@@ -12,7 +12,6 @@ cloudinary.config({
 router.get('/', async (req, res) => {
     Images.getAll()
         .then(x => {
-            console.log(x);
             res.status(200).json(x);
         })
         .catch(err => res.status(400).send(err));

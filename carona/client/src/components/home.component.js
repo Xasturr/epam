@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Carousel from 'react-bootstrap/Carousel';
+import Footer from './footer.component';
 import config from '../config/config';
 const url = config.url;
 
@@ -10,7 +12,7 @@ export default class Home extends Component {
 
         this.state = {
             loading: true,
-            photoes: []
+            images: []
         }
     }
 
@@ -19,6 +21,7 @@ export default class Home extends Component {
 
         axios.get(url + window.location.pathname)
             .then(res => {
+                this.setState({ images: res.data[0].images });
                 console.log(res.data[0].images);
             })
             .catch(err => {
@@ -26,15 +29,44 @@ export default class Home extends Component {
             })
     }
 
+    CarouselImages() {
+        let images = [];
+
+        for (let i = 0; i < this.state.images.length; i++) {
+            images.push(<Carousel.Item key={i}>
+                <img
+                    className="d-block w-100"
+                    src={this.state.images[i]}
+                    alt="car image"
+                />
+            </Carousel.Item>);
+        }
+        return images;
+    }
+
     render() {
+
+        const carousel = (
+            <Carousel interval="2000" indicators={false}>
+                {this.CarouselImages()}
+            </Carousel>
+        )
+
         return (
-            <div className="container">
-                <p id="textStyle">Вас вітає сайт <b>Out Of Lag</b>! Якщо автомобіль для вас - це не просто чотири колеса та сидіння, якщо ви відчуваєте,
-                що іноді від цих сталевих коней неможливо відірвати погляд, якщо вам до вподоби палкий спів японських роторів, чи рев
-                могутніх американських V8, або просто завітали почитаті цікаві блоги, то цей сайт для вас! Якщо ви маєте цікавий досвід
-                у володінні свого металевого друга, можете ним поділитися із усіма читачами, або ж якщо ви просто хочете почитати статті
-              інших водіїв, ласкаво просимо!</p>
-            </div>
+            < div className="wrapper">
+                {carousel}
+                <p className="textStyle">
+                    Hello World! Hello World! Hello World! Hello World!
+                    Hello World! Hello World! Hello World! Hello World! Hello World! Hello World!
+                    Hello World! Hello World! Hello World! Hello World! Hello World! Hello World!
+                    Hello World! Hello World! Hello World! Hello World! Hello World! Hello World!
+                    Hello World! Hello World! Hello World! Hello World! Hello World! Hello World!
+                    Hello World! Hello World! Hello World! Hello World! Hello World! Hello World!
+                    Hello World! Hello World! Hello World! Hello World! Hello World! Hello World!
+                    Hello World! Hello World! Hello World! Hello World! Hello World! Hello World!
+                </p>
+                <Footer/>
+            </div >
         )
     }
 }

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from './components/navbar.component';
 import Home from './components/home.component';
+import Contacts from './components/contacts.component';
 
 export default class App extends Component {
 
@@ -12,9 +13,9 @@ export default class App extends Component {
       <Router>
         <div>
           <Navbar />
-          <br />
           <Switch>
             <Route exaxt path="/home" component={Home} />
+            <Route exaxt path="/contacts" component={Contacts} />
           </Switch>
         </div>
       </Router >

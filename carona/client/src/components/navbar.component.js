@@ -13,9 +13,8 @@ class Navbar extends Component {
 
         return (
             <nav className="uppernav">
-                <ul>
+                <ul className="uppernav__ul">
                     <li className="uppernav__li"><a className="uppernav__logo" href="/home">Carona</a></li>
-                    <li className="uppernav__li"><a className="uppernav__link" href="/home">Home</a></li>
                     <li className="uppernav__li"><a className="uppernav__link" href="/cars">Cars</a></li>
                     <li className="uppernav__li"><a className="uppernav__link" href="/contacts">Contacts</a></li>
                 </ul>

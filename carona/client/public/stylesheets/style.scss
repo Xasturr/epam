@@ -1,283 +1,123 @@
+$navbar-height: 70px;
+$text-color: rgb(230, 230, 230);
+
 * {
-    padding: 0;
-    margin: 0;
+        padding: 0;
+        margin: 0;
 }
 
-.myContainer {
-    font-family: 'Times New Roman', Times, serif;
+.textStyle {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 20px;
+        white-space: pre-line;
+        color: $text-color;
+        display: table-cell;
 }
 
-.par {
-    position: relative;
-    top: 60px;
+.wrapper {
+        background-color: black;
+        white-space: pre-line;
 }
 
-.center {
-    text-align: center;
+.horline {
+        border: 0.1px solid $text-color;
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-top: 0px;
 }
 
-#textStyle {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 18px;
-    white-space: pre-line;
-}
-
-#commentId {
-    white-space: pre-wrap;
-}
-
-#logo {
-    position: absolute; 
-    left: 15px;
-    top: 0px;
-}
-
-#home {
-    position: absolute;
-    left: 525px;
-    color: white;
-    top: 10px;
-}
-
-#home:hover {
-    text-decoration-line: underline;
-}
-
-#homeCur {
-    position: absolute;
-    left: 525px;
-    text-decoration-line: underline;
-    color: white;
-    top: 10px;
-}
-
-#users {
-    position: absolute;
-    left: 450px;
-    color: white;
-    top: 10px;
-}
-
-#users:hover {
-    text-decoration-line: underline;
-}
-
-#usersCur {
-    position: absolute;
-    left: 450px;
-    text-decoration-line: underline;
-    color: white;
-    top: 10px;
-}
-
-#blogs {
-    position: absolute;
-    left: 600px;
-    color: white;
-    top: 10px;
-}
-
-#blogs:hover {
-    text-decoration-line: underline;
-}
-
-#blogsCur {
-    position: absolute;
-    left: 600px; 
-    text-decoration-line: underline;
-    color: white;
-    top: 10px;
-}
-
-#companies {
-    position: absolute;
-    left: 675px;
-    color: white;
-    top: 10px;
-}
-
-#companies:hover {
-    text-decoration-line: underline;
-}
-
-#companiesCur {
-    position: absolute;
-    left: 675px;
-    text-decoration-line: underline;
-    color: white;
-    top: 10px;
-}
-
-#about {
-    position: absolute;
-    left: 785px;
-    color: white;
-    top: 10px;
-}
-
-#about:hover {
-    text-decoration-line: underline;
-}
-
-#aboutCur {
-    position: absolute;
-    left: 785px;
-    text-decoration-line: underline;
-    color: white;
-    top: 10px;
-}
-
-#loginId {
-    position: absolute;
-    left: 1000px;
-    color: white;
-    top: 10px;
-}
-
-#loginId:hover {
-    text-decoration-line: underline;
-}
-
-#signupId {
-    position: absolute;
-    left: 1060px;
-    color: white;
-    top: 10px;
-}
-
-#signupId:hover {
-    text-decoration-line: underline;   
-}
-
-#ava {
-    height: 128px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    /* display:inline-block; */
-}
-
-#blogImg {
-    width: 1080px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#info {
-    display:inline-block;
-    display: block;
-}
-
-#myPageBtnsId {
-    margin-left: 2%;
-    display:inline-block;
-}
-
-#myBlogsId {
-    display:inline-block;
-}
-
-#leftButton {
-    position: absolute;
-    left: 440px;
-    width: 40px;
-    color: white;
-    border-radius: 0px;
-    background: black;
-    transition: 0.3s;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-#leftButton:hover {
-    font-weight: 1000;
-    background:rgb(80, 80, 90);
-}
-
-#rightButton {
-    position: absolute;
-    left: 480px;
-    width: 40px;
-    color: white;
-    border-radius: 0px;
-    background: black;
-    transition: 0.3s;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-#rightButton:hover {
-    font-weight: 1000;
-    background:rgb(80, 80, 90);
-}
-
-#searchButton {
-    position: relative;
-    top: 3px;
-    right: 4px;
-}
-
-#loginComment {
-    display:inline-block;
-    margin-right: 2%;
-}
-
-#deleteTextId {
-    display:inline-block;
-}
-
-#deleteTextId:hover {
-    text-decoration-line: underline;
-    cursor: pointer;
-}
-
-#likeBtnId {
-    margin-left: 4%;
-}
-
-#likeBtnId:hover { 
-    color: white;
-    background-color: red;
-}
-
-#viewsBtnId { 
-    margin-left: 1%;
-}
-
-#viewsBtnId:hover { 
-    color: white;
-    background-color: gray
-    ;}
-
-#artTitleId {
-    display:inline-block;
+#map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
 }
 
 .uppernav {
-    background: black;
-    align-items: center;
-    position: relative;
+        background: black;
+        position: relative;
 
-    &__li {
-        display: inline;
-    }
+        &__ul {
+                margin-bottom: 0px;
+        }
 
-    &__link {
-        text-decoration: none;
-        font-size: 20px;
-        line-height: 50px;
-        margin-right: 16px;
-        margin-left: 10px;
-        color: white;
-    }
+        &__li {
+                display: inline;
+        }
 
-    &__logo {
-        text-decoration: none;
-        font-size: 25px;
-        line-height: 50px;
-        margin-right: 40px;
-        margin-left: 10px;
-        color: white;
-    }
+        &__link {
+                text-decoration: none;
+                font-size: 20px;
+                line-height: $navbar-height;
+                margin-right: 16px;
+                margin-left: 10px;
+                color: white;
+        }
+
+        &__link:hover {
+                text-decoration: none;
+                color: white;
+        }
+
+        &__logo {
+                text-decoration: none;
+                font-size: 25px;
+                line-height: $navbar-height;
+                margin-right: 40px;
+                margin-left: 10px;
+                color: white;
+        }
+
+        &__logo:hover {
+                text-decoration: none;
+                color: white;
+        }
+}
+
+.footer {
+        background: black;
+        position: relative;
+
+        &__content {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        &__ul {
+                grid-column-start: 2;
+                justify-self: center;
+                text-align: center;
+                margin-bottom: 0px;
+                // display: inline-block;
+        }
+
+        &__li {
+                display: inline;
+        }
+
+        &__inc {
+                grid-column-start: 1;
+                text-align: left;
+                color: $text-color;
+                margin-left: 20px;
+                margin-top: 6px;
+        }
+
+        &__link {
+                text-align: center;
+                margin-right: 10px;
+                margin-left: 10px;
+                width: 40px;
+                height: 40px;
+                background: $text-color;
+                border-radius: 50%;
+                display: inline-block;
+                margin-bottom: 15px;
+        }
+
+        &__img {
+                margin-top: 5px;
+                width: 30px;
+                height: auto;
+        }
 }
