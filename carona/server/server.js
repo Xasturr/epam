@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dbconfig = require('./config/database');
 const homeRouter = require('./routes/home');
+const contactsRouter = require('./routes/contacts');
 const cors = require('cors');
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/home', homeRouter);
+app.use('/contacts', contactsRouter);
 
 const databaseUrl = dbconfig.DatabaseUrl;
 const serverPort = dbconfig.ServerPort;

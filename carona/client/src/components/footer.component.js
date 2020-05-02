@@ -13,10 +13,9 @@ export default class Footer extends Component {
                 <div className="footer__content">
                     <span className="footer__inc">© 2020 Carona, Inc.</span>
                     <ul className="footer__ul">
-                        {/* <li className="footer__li"><span className="footer__inc">© 2020 Carona, Inc.</span></li> */}
-                        <li className="footer__li"><a className="footer__link" target="_blank" href="https://www.instagram.com/xasturr/"><img src={instagram_logo} className="footer__img"></img></a></li>
-                        <li className="footer__li"><a className="footer__link" target="_blank" href="https://t.me/XP0M0C0MA"><img src={telegram_logo} className="footer__img"></img></a></li>
-                        <li className="footer__li"><a className="footer__link" target="_blank" href="https://www.youtube.com/channel/UCoAhQTkNhR2uW5xe3aaWkbw?view_as=subscriber"><img src={youtube_logo} className="footer__img"></img></a></li>
+                        <li className="footer__li"><a className="footer__link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/xasturr/"><img src={instagram_logo} className="footer__img" alt="telegram logo"></img></a></li>
+                        <li className="footer__li"><a className="footer__link" target="_blank" rel="noopener noreferrer" href="https://t.me/XP0M0C0MA"><img src={telegram_logo} className="footer__img" alt="instagram logo"></img></a></li>
+                        <li className="footer__li"><a className="footer__link" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCoAhQTkNhR2uW5xe3aaWkbw?view_as=subscriber"><img src={youtube_logo} className="footer__img" alt="youtube logo"></img></a></li>
                     </ul>
                 </div>
             </div>

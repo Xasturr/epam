@@ -8,8 +8,8 @@ class GoogleMap extends Component {
 
   render() {
     const mapStyles = {
-      width: '100%',
-      height: '100%',
+      width: 'auto',
+      height: '600px',
       position: 'relative'
     };
 
