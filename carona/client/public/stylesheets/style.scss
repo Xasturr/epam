@@ -1,10 +1,10 @@
 $navbar-height: 70px;
-$text-color: rgb(230, 230, 230);
+$text-color: rgb(210, 210, 210);
+$input-height: 40px;
 
 * {
         padding: 0;
         margin: 0;
-        // background-color: black;
 }
 
 .textStyle {
@@ -19,13 +19,14 @@ $text-color: rgb(230, 230, 230);
 .wrapper {
         white-space: pre-line;
         background-color: black;
+        height: 100%;
 }
 
 .horline {
         border: 0.1px solid $text-color;
-        margin-left: 100px;
-        margin-right: 100px;
-        margin-top: 10px;
+        // margin-left: 100px;
+        // margin-right: 100px;
+        margin-top: 0px;
 }
 
 .par {
@@ -143,7 +144,7 @@ $text-color: rgb(230, 230, 230);
                 border-width: 4px;
                 border-style: solid;
                 border-radius: 40px;
-                background: rgb(40, 40, 40);
+                background: rgb(30, 30, 30);
                 border-color: rgb(20, 20, 20);
                 padding: 20px;
                 width: auto;
@@ -162,7 +163,7 @@ $text-color: rgb(230, 230, 230);
 
         &__info {
                 display: block;
-                background: rgb(40, 40, 40);
+                background: rgb(30, 30, 30);
                 color: $text-color;
                 margin-left: 20px;
         }
@@ -173,7 +174,7 @@ $text-color: rgb(230, 230, 230);
         }
 
         &__subinfo {
-                background: rgb(40, 40, 40);
+                background: rgb(30, 30, 30);
                 margin-top: 10px;
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
@@ -185,7 +186,7 @@ $text-color: rgb(230, 230, 230);
                 white-space: pre-line;
                 color: $text-color;
                 display: table-cell;
-                background: rgb(40, 40, 40);
+                background: rgb(30, 30, 30);
         }
 }
 
@@ -226,5 +227,185 @@ $text-color: rgb(230, 230, 230);
         }
         &:after {
                 left: 1.5%;
+        }
+}
+
+.sidenav {
+        height: 500px; /* Full-height: remove this if you want "auto" height */
+        width: 200px; /* Set the width of the sidebar */
+        // position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+        z-index: 1;
+        top: 0; /* Stay at the top */
+        left: 0;
+        // background-color: #111; /* Black */
+        // background-color: rgb(20, 20, 20);
+        background: rgb(30, 30, 30);
+        overflow-x: hidden; /* Disable horizontal scroll */
+        -ms-overflow-style: none;
+        border-right-width: 0.5px;
+        border-right-style: solid;
+        border-right-color: $text-color;
+        border-top-width: 0.5px;
+        border-top-style: solid;
+        border-top-color: $text-color;
+        border-bottom-width: 0.5px;
+        border-bottom-style: solid;
+        border-bottom-color: $text-color;
+        color: $text-color;
+
+        &__element {
+                margin: 5px;
+        }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.sidenav::-webkit-scrollbar {
+        display: none;
+}
+
+/* The navigation menu links */
+// .sidenav a {
+//         padding: 0px 8px 6px 16px;
+//         text-decoration: none;
+//         font-size: 20px;
+//         color: $text-color;
+//         display: block;
+// }
+
+/* When you mouse over the navigation links, change their color */
+// .sidenav a:hover {
+//         color: #f1f1f1;
+// }
+
+.cars {
+        display: -webkit-box;
+        width: 100%;
+        // margin-left: 200px;
+
+        &__input {
+                outline-width: 0px;
+                width: 800px;
+                padding-left: 8px;
+                height: $input-height;
+        }
+
+        &__search {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                // width: 900px;
+                display: -webkit-inline-box;
+
+                &__el {
+                }
+        }
+
+        &__content {
+                display: inline-grid;
+        }
+}
+
+.btn {
+        text-align: center;
+        &__dark {
+                width: 70px;
+                height: $input-height;
+                outline-width: 0px;
+                border-width: 1px;
+                border-radius: 0 10px 10px 0px;
+        }
+
+        &__dark:focus {
+                outline: none;
+        }
+}
+
+.car-list {
+        &__list {
+                display: -webkit-inline-box;
+        }
+
+        &__ul {
+                // display: grid;
+        }
+
+        &__li {
+                display: block;
+                border-bottom: 0.5px solid $text-color;
+                margin-left: 40px;
+        }
+
+        &__dark {
+                display: -webkit-inline-box;
+                // border-width: 1px;
+                // border-style: solid;
+                padding: 20px;
+                width: auto;
+                height: auto;
+                margin: 10px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+        }
+
+        &__img {
+                margin: 0 auto;
+                margin-left: -20%;
+                height: 100%;
+                width: auto;
+        }
+
+        &__info {
+                display: block;
+                color: $text-color;
+                margin-left: 20px;
+                width: 450px;
+
+                font-size: 30px;
+
+                &__main {
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);    
+                        margin-bottom: 40px;
+                }
+        }
+
+        &__opening-hours {
+                margin-left: 20px;
+                margin-bottom: 20px;
+        }
+
+        &__subinfo {
+                margin-top: 15px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        &__text-style {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                font-size: 20px;
+                white-space: pre-line;
+                color: $text-color;
+                display: table-cell;
+
+                &__main {
+                        font-size: 30px;
+                        font-weight: bolder;
+                        color: $text-color;
+                        word-wrap: break-word;
+                        margin-bottom: 20px;
+                }
+
+                &__main:hover {
+                        color: $text-color;
+                }
+        }
+
+        &__img-cropper {
+                display: -webkit-inline-box;
+                box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.5);
+                width: 300px;
+                height: 300px;
+                position: relative;
+                overflow: hidden;
+                border-style: solid;
+                border-radius: 5%;
         }
 }

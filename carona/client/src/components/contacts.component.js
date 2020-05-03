@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMap from './googlemap.component';
 import axios from 'axios';
 import Footer from './footer.component';
-import ContactsList from './contacts-list.component';
+import ContactList from './contact-list.component';
 import config from '../config/config';
 const url = config.url;
 
@@ -26,7 +26,7 @@ export default class Contacts extends Component {
                 this.setState({ loading: false });
             })
             .catch(err => {
-                console.log("An error occured in componentDidMount in home.component\n", err);
+                console.log("An error occured in componentDidMount in contacts.component\n", err);
             })
     }
 
@@ -34,20 +34,20 @@ export default class Contacts extends Component {
         return (
             <div className="wrapper">
                 {this.state.loading ? '' :
-                    <>
+                    <div>
                         <div className="contact__body">
                             <div id="map">
                                 <GoogleMap /><br />
                             </div>
                             <p className="title_text">CONTACTS INFO</p>
-                            <ContactsList contacts={this.state.contacts} />
+                            <ContactList contacts={this.state.contacts} />
                             <p className="title_text">OPENING HOURS</p>
                             <div className="contact__opening-hours">
                                 <p className="textStyle">Mon-Fri : 08:00 - 22:00<br />Sat-Sun : 10:00 - 21:00</p>
                             </div>
                         </div>
                         <Footer />
-                    </>
+                    </div>
                 }
             </div>
         )

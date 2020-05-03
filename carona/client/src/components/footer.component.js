@@ -8,7 +8,7 @@ export default class Footer extends Component {
     render() {
 
         return (
-            <div className="wrapper">
+            <div>
                 <hr className="horline"></hr>
                 <div className="footer__content">
                     <span className="footer__inc">© 2020 Carona, Inc.</span>

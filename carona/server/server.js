@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dbconfig = require('./config/database');
 const homeRouter = require('./routes/home');
 const contactsRouter = require('./routes/contacts');
+const carsRouter = require('./routes/cars');
 const cors = require('cors');
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(cors());
 
 app.use('/home', homeRouter);
 app.use('/contacts', contactsRouter);
+app.use('/cars', carsRouter);
 
 const databaseUrl = dbconfig.DatabaseUrl;
 const serverPort = dbconfig.ServerPort;

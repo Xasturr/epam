@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Contact from "./contact.component";
 
-export default class ContactsList extends Component {
+export default class ContactList extends Component {
 
     constructor(props) {
         super(props);
@@ -11,7 +11,7 @@ export default class ContactsList extends Component {
         }
     }
 
-    ContactsList() {
+    ContactList() {
         return this.state.contacts.map(contact => {
             return (
                 <li className="contact__li" key={contact._id}>
@@ -26,7 +26,7 @@ export default class ContactsList extends Component {
         return (
             <div className="contactList">
                 <ul className="contact__ul">
-                    {this.ContactsList()}
+                    {this.ContactList()}
                 </ul>
             </div>
         )
