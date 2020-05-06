@@ -10,9 +10,16 @@ export default class Cars extends Component {
     constructor(props) {
         super(props);
 
+        this.brandChoose = this.brandChoose.bind(this);
+        this.modelChoose = this.modelChoose.bind(this);
+        this.inputUnodify = this.modelsInputUnodify.bind(this);
+
         this.state = {
             cars: [],
-            loading: true
+            loading: true,
+            brand: '',
+            model: '',
+            models: []
         }
     }
 
@@ -21,13 +28,56 @@ export default class Cars extends Component {
 
         axios.get(url + window.location.pathname)
             .then(res => {
-                console.log(res.data);
                 this.setState({ cars: res.data });
                 this.setState({ loading: false });
             })
             .catch(err => {
                 console.log("An error occured in componentDidMount in cars.component\n", err);
             })
+    }
+
+    brandChoose(e) {
+        e.preventDefault();
+        this.setState({ brand: e.target.value });
+        if (e.target.value.length > 0) {
+            axios.get(url + '/brands/' + this.state.brand)
+                .then(res => {
+                    console.log(url + '/brands/' + this.state.brand);
+                    console.log(res);
+                    this.setState({ models: res.data[0].models });
+                })
+                .catch(err => {
+                    console.log("An error occured in modelChoose in cars.component\n", err);
+                })
+        }
+    }
+
+    modelChoose(e) {
+        e.preventDefault();
+        // if (this.state.brand.length > 0) {
+        //     axios.get(url + '/brands/' + this.state.brand)
+        //         .then(res => {
+        //             console.log(res.data[0].models);
+        //             this.setState({ models: res.data[0].models });
+        //         })
+        //         .catch(err => {
+        //             console.log("An error occured in modelChoose in cars.component\n", err);
+        //         })
+        // }
+        // else
+        // e.target.disabled = true;
+    }
+
+    modelsInputUnodify(e) {
+        // e.target.value =
+    }
+
+    Models() {
+        return this.state.models.map(model => {
+            return (
+                <option key={model} value={model} onChange={this.brandChoose} />
+            )
+        })
     }
 
     render() {
@@ -41,14 +91,16 @@ export default class Cars extends Component {
                 <div className="cars">
                     <div className="sidenav">
                         <p className="sidenav__element">Brand:</p>
-                        <input list="brands" name="brand" placeholder="Choose">
+                        <input list="brands" name="brand" placeholder="Choose" onInput={this.brandChoose}>
                         </input>
                         <datalist id="brands">
-                            <option value="Internet Explorer" />
-                            <option value="Firefox" />
-                            <option value="Chrome" />
-                            <option value="Opera" />
-                            <option value="Safari" />
+                            <option value="Bentley" />
+                            <option value="BMW" />
+                        </datalist>
+                        <input list="models" name="model" placeholder="Choose" onClick={this.modelChoose}>
+                        </input>
+                        <datalist id="models">
+                            {this.Models()}
                         </datalist>
                     </div>
                     <div className="cars__content">
