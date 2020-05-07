@@ -1,6 +1,6 @@
 $navbar-height: 70px;
 $text-color: rgb(210, 210, 210);
-$input-height: 40px;
+$input-height: 35px;
 
 * {
         padding: 0;
@@ -231,15 +231,12 @@ $input-height: 40px;
 }
 
 .sidenav {
-        height: 500px; /* Full-height: remove this if you want "auto" height */
+        height: 330px; /* Full-height: remove this if you want "auto" height */
         width: 200px; /* Set the width of the sidebar */
-        // position: fixed; /* Fixed Sidebar (stay in place on scroll) */
         z-index: 1;
         top: 0; /* Stay at the top */
         left: 0;
-        // background-color: #111; /* Black */
-        // background-color: rgb(20, 20, 20);
-        background: rgb(30, 30, 30);
+        // background: rgb(30, 30, 30);
         overflow-x: hidden; /* Disable horizontal scroll */
         -ms-overflow-style: none;
         border-right-width: 0.5px;
@@ -255,6 +252,44 @@ $input-height: 40px;
 
         &__element {
                 margin: 5px;
+                &__year {
+                        display: inline-flex;
+                        width: 100px;
+                }
+                &__btn {
+                        display: flex;
+                }
+        }
+
+        &__input {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                border-radius: 3px;
+                outline-width: 0px;
+                width: -webkit-fill-available;
+                padding: 3px;
+                background-color: black;
+                color: $text-color;
+                border-left-width: 0px;
+                border-right-width: 0px;
+        }
+
+        &__button {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                display: block;
+                width: -webkit-fill-available;
+                height: $input-height;
+                outline-width: 0px;
+                border-width: 1px;
+                border-radius: 5px;
+                margin-top: 10px;
+                background-color: black;
+                color: $text-color;
+        }
+
+        &__button:focus {
+                outline-width: 0px;
         }
 }
 

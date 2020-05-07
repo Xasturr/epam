@@ -42,4 +42,11 @@ CarModel.getCar = function (id) {
     return CarModel.find({ '_id': id });
 }
 
+CarModel.compare = function (queryParam, carParam) {
+    if (queryParam.length > 0)
+        if (queryParam !== carParam)
+            return false
+    return true;
+}
+
 module.exports = mongoose.model('Car', CarSchema);
