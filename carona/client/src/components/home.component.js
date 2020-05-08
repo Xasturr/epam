@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
-import Footer from './footer.component';
 import config from '../config/config';
 const url = config.url;
 
@@ -82,7 +81,6 @@ export default class Home extends Component {
                     service</b>. Moreover, the cars are <b>not older than 4 years old</b>.
                 </p>
                 </div>
-                <Footer />
             </div >
         )
     }

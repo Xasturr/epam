@@ -12,7 +12,8 @@
 .wrapper {
   white-space: pre-line;
   background-color: black;
-  height: 100%; }
+  height: 100%;
+  min-height: 100vh; }
 
 .horline {
   border: 0.1px solid #d2d2d2;
@@ -116,7 +117,8 @@
   margin-left: 20px; }
 .contact__opening-hours {
   margin-left: 20px;
-  margin-bottom: 20px; }
+  margin-bottom: 10px;
+  display: inline-block; }
 .contact__subinfo {
   background: #1e1e1e;
   margin-top: 10px;
@@ -162,32 +164,24 @@
     left: 1.5%; }
 
 .sidenav {
-  height: 330px;
+  transition: 0.5s;
+  height: 0px;
   /* Full-height: remove this if you want "auto" height */
-  width: 200px;
-  /* Set the width of the sidebar */
+  width: 800px;
   z-index: 1;
   top: 0;
   /* Stay at the top */
   left: 0;
+  text-align: center;
   overflow-x: hidden;
   /* Disable horizontal scroll */
   -ms-overflow-style: none;
-  border-right-width: 0.5px;
-  border-right-style: solid;
-  border-right-color: #d2d2d2;
-  border-top-width: 0.5px;
-  border-top-style: solid;
-  border-top-color: #d2d2d2;
-  border-bottom-width: 0.5px;
-  border-bottom-style: solid;
-  border-bottom-color: #d2d2d2;
-  color: #d2d2d2; }
+  color: #d2d2d2;
+  margin-left: 30px; }
   .sidenav__element {
     margin: 5px; }
     .sidenav__element__year {
-      display: inline-flex;
-      width: 100px; }
+      display: inline-flex; }
     .sidenav__element__btn {
       display: flex; }
   .sidenav__input {
@@ -198,28 +192,47 @@
     padding: 3px;
     background-color: black;
     color: #d2d2d2;
+    margin: 10px;
+    margin-top: 0px;
     border-left-width: 0px;
     border-right-width: 0px; }
+    .sidenav__input__year {
+      width: 100px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      border-radius: 3px;
+      outline-width: 0px;
+      padding: 3px;
+      background-color: black;
+      color: #d2d2d2;
+      border-left-width: 0px;
+      border-right-width: 0px;
+      margin-left: 1px;
+      margin-right: 1px; }
   .sidenav__button {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     display: block;
-    width: -webkit-fill-available;
+    width: 50px;
+    margin: 10px;
+    margin-left: 1px;
+    margin-right: 1px;
     height: 35px;
     outline-width: 0px;
     border-width: 1px;
-    border-radius: 5px;
+    border-radius: 3px;
+    border-left-width: 0px;
+    border-right-width: 0px;
     margin-top: 10px;
     background-color: black;
-    color: #d2d2d2; }
+    color: #d2d2d2;
+    display: inline-block; }
   .sidenav__button:focus {
     outline-width: 0px; }
+  .sidenav__li {
+    display: inline-block; }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .sidenav::-webkit-scrollbar {
   display: none; }
 
-/* The navigation menu links */
-/* When you mouse over the navigation links, change their color */
 .cars {
   display: -webkit-box;
   width: 100%; }
@@ -302,5 +315,41 @@
   overflow: hidden;
   border-style: solid;
   border-radius: 5%; }
+
+.sorting {
+  display: inline-flex;
+  align-items: end;
+  margin-top: 20px; }
+  .sorting__text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    border-radius: 3px;
+    outline-width: 0px;
+    margin-left: 40px;
+    margin-bottom: 0px;
+    background-color: black;
+    color: #d2d2d2;
+    border-left-width: 0px;
+    border-right-width: 0px; }
+  .sorting__select {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    outline-width: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-radius: 3px;
+    background-color: black;
+    color: #d2d2d2; }
+  .sorting__spec {
+    margin-left: 50px;
+    cursor: pointer;
+    color: #d2d2d2; }
+
+.notfound {
+  margin: 20px;
+  color: #d2d2d2; }
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none; }
 
 /*# sourceMappingURL=style.css.map */

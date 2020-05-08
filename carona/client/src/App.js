@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from './components/navbar.component';
+import Footer from './components/footer.component';
 import Home from './components/home.component';
 import Contacts from './components/contacts.component';
 import Cars from './components/cars.component';
@@ -19,6 +20,7 @@ export default class App extends Component {
             <Route exaxt path="/contacts" component={Contacts} />
             <Route exaxt path="/cars" component={Cars} />
           </Switch>
+          <Footer />
         </div>
       </Router >
     );
@@ -35,21 +37,21 @@ export default class App extends Component {
 //     post: '',
 //     responseToPost: '',
 //   };
-  
+
 //   componentDidMount() {
 //     this.callApi()
 //       .then(res => this.setState({ response: res.express }))
 //       .catch(err => console.log(err));
 //   }
-  
+
 //   callApi = async () => {
 //     const response = await fetch('/api/hello');
 //     const body = await response.json();
 //     if (response.status !== 200) throw Error(body.message);
-    
+
 //     return body;
 //   };
-  
+
 //   handleSubmit = async e => {
 //     e.preventDefault();
 //     const response = await fetch('/api/world', {
@@ -60,10 +62,10 @@ export default class App extends Component {
 //       body: JSON.stringify({ post: this.state.post }),
 //     });
 //     const body = await response.text();
-    
+
 //     this.setState({ responseToPost: body });
 //   };
-  
+
 // render() {
 //     return (
 //       <div className="App">

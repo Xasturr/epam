@@ -8,7 +8,7 @@ export default class Footer extends Component {
     render() {
 
         return (
-            <div>
+            <div className="footer">
                 <hr className="horline"></hr>
                 <div className="footer__content">
                     <span className="footer__inc">© 2020 Carona, Inc.</span>
@@ -18,6 +18,7 @@ export default class Footer extends Component {
                         <li className="footer__li"><a className="footer__link" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCoAhQTkNhR2uW5xe3aaWkbw?view_as=subscriber"><img src={youtube_logo} className="footer__img" alt="youtube logo"></img></a></li>
                     </ul>
                 </div>
+                <div className="footer__else"></div>
             </div>
         )
     }

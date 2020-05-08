@@ -24,7 +24,8 @@ router.post('/search', (req, res) => {
                 const car = cars[i];
                 if (!Car.compare(req.body.brand, car.brand) ||
                     !Car.compare(req.body.model, car.model) ||
-                    !Car.compare(req.body.class, car.class))
+                    !Car.compare(req.body.class, car.class) ||
+                    !Car.compare(req.body.country, car.country))
                     continue;
                 if (req.body.yearFrom.length > 0)
                     if (req.body.yearFrom > car.year)

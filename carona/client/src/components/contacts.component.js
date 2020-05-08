@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMap from './googlemap.component';
 import axios from 'axios';
-import Footer from './footer.component';
 import ContactList from './contact-list.component';
 import config from '../config/config';
 const url = config.url;
@@ -46,7 +45,6 @@ export default class Contacts extends Component {
                                 <p className="textStyle">Mon-Fri : 08:00 - 22:00<br />Sat-Sun : 10:00 - 21:00</p>
                             </div>
                         </div>
-                        <Footer />
                     </div>
                 }
             </div>
