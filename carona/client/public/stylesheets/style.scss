@@ -344,9 +344,10 @@ $input-height: 35px;
 
         &__input {
                 outline-width: 0px;
-                width: 800px;
+                width: 750px;
                 padding-left: 8px;
                 height: $input-height;
+                border-radius: 10px 0px 0px 10px;
         }
 
         &__search {
@@ -354,6 +355,7 @@ $input-height: 35px;
                         sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
                 // width: 900px;
                 display: -webkit-inline-box;
+                margin-left: 40px;
 
                 &__el {
                 }
