@@ -19,9 +19,9 @@ export default class Contacts extends Component {
         }
     }
 
-    componentDidMount() {
-        document.title = this.state.brand + ' ' + this.state.model;
-    }
+    // componentDidMount() {
+    //     document.title = this.state.brand + ' ' + this.state.model;
+    // }
 
     render() {
 

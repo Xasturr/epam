@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CarList from './car-list.component';
+import Optbar from './optbar.component';
 import config from '../config/config';
 const url = config.url;
 
@@ -9,20 +10,13 @@ export default class Cars extends Component {
     constructor(props) {
         super(props);
 
-        this.onSearch = this.onSearch.bind(this);
-        this.onChangeBrand = this.onChangeBrand.bind(this);
-        this.onChangeModel = this.onChangeModel.bind(this);
-        this.onChangeClass = this.onChangeClass.bind(this);
-        this.onChangeCountry = this.onChangeCountry.bind(this);
-        this.onChangeYearFrom = this.onChangeYearFrom.bind(this);
-        this.onChangeYearTo = this.onChangeYearTo.bind(this);
-        this.onClear = this.onClear.bind(this);
         this.onChangeSorting = this.onChangeSorting.bind(this);
         this.onSpecClick = this.onSpecClick.bind(this);
         this.onSearchInputChange = this.onSearchInputChange.bind(this);
         this.onSearchBtnClick = this.onSearchBtnClick.bind(this);
 
         this.state = {
+            allCars: [],
             cars: [],
             loading: true,
             brand: '',
@@ -35,7 +29,7 @@ export default class Cars extends Component {
             yearFrom: '',
             yearTo: '',
             sorting: 'Brand from A to Z',
-            specs: 'open',
+            specs: 'close',
             searchInput: ''
         }
     }
@@ -54,7 +48,10 @@ export default class Cars extends Component {
                     return 0;
                 });
 
-                this.setState({ cars: res.data });
+                this.setState({
+                    allCars: res.data,
+                    cars: res.data
+                });
 
                 let countries = [];
                 let brands = [];
@@ -104,85 +101,26 @@ export default class Cars extends Component {
         })
     }
 
-    onSearch(e) {
-        e.preventDefault();
-
-        const params = {
-            brand: this.state.brand,
-            model: this.state.model,
-            class: this.state.class,
-            country: this.state.country,
-            yearFrom: this.state.yearFrom,
-            yearTo: this.state.yearTo
-        };
-
-        axios.post(url + '/cars/search', params)
-            .then(res => {
-                res.data = this.sortCars(res.data, this.state.sorting);
-
-                return this.setState({
-                    cars: res.data,
-                    loading: true
-                });
-            })
-            .then(res => {
-                this.setState({ loading: false });
-            })
-            .catch(err => {
-                console.log("An error occured in onModel in cars.component\n", err);
-            })
-    }
-
     onChangeBrand(e) {
         e.preventDefault();
         const b = e.target.value;
         this.setState({ brand: b });
-
-        let models = [];
         if (b.length > 0) {
-            axios.get(url + '/cars')
-                .then(res => {
-                    for (let i = 0; i < res.data.length; i++) {
-                        if (res.data[i].brand.toLowerCase() === b.toLowerCase())
-                            models.push(res.data[i].model);
-                    }
-                    this.setState({ models: models });
-                })
-                .catch(err => console.log(err));
+            let models = [];
+            let allCars = this.state.allCars;
+            for (let i = 0; i < allCars.length; i++) {
+                if (allCars[i].brand.toLowerCase() === b.toLowerCase())
+                    models.push(allCars[i].model);
+            }
+            this.setState({ models: models });
         }
     }
 
-    onChangeModel(e) {
-        this.setState({ model: e.target.value });
-    }
-
-    onChangeClass(e) {
-        this.setState({ class: e.target.value });
-    }
-
-    onChangeCountry(e) {
-        this.setState({ country: e.target.value });
-    }
-
-    onChangeYearFrom(e) {
-        this.setState({ yearFrom: e.target.value });
-    }
-
-    onChangeYearTo(e) {
-        this.setState({ yearTo: e.target.value });
-    }
-
-    onClear(e) {
-        this.setState({
-            brand: '', model: '', class: '', country: '', yearTo: '', yearFrom: ''
-        });
-    }
-
     onChangeSorting(e) {
-        this.setState({ sorting: e.target.value });
         let cars = this.state.cars;
         cars = this.sortCars(cars, e.target.value);
         this.setState({ cars: cars })
+        this.setState({ sorting: e.target.value });
     }
 
     sortCars(cars, opt) {
@@ -228,11 +166,11 @@ export default class Cars extends Component {
     onSpecClick(e) {
         if (this.state.specs === 'open') {
             this.setState({ specs: 'close' });
-            document.getElementsByClassName("sidenav")[0].style.height = "220px";
+            document.getElementsByClassName("optbar")[0].style.height = "0px";
         }
         else {
             this.setState({ specs: 'open' });
-            document.getElementsByClassName("sidenav")[0].style.height = "0px";
+            document.getElementsByClassName("optbar")[0].style.height = "220px";
         }
     }
 
@@ -242,28 +180,33 @@ export default class Cars extends Component {
 
     onSearchBtnClick(e) {
         let searchInput = this.state.searchInput;
-        axios.get(url + '/cars')
-            .then(res => {
-                this.setState({ loading: true });
-                if (searchInput) {
-                    let cars = [];
-                    let brandModel = '';
+        const allCars = this.state.allCars;
+        this.setState({ loading: true }, () => {
+            if (searchInput) {
+                let cars = [];
+                let brandModel = '';
+                for (let i = 0; i < allCars.length; i++) {
+                    brandModel = allCars[i].brand + ' ' + allCars[i].model + ' ' + allCars[i].year;
+                    if (brandModel.toLocaleLowerCase().includes(searchInput.toLowerCase()))
+                        cars.push(allCars[i]);
+                }
+                this.setState({ cars: this.sortCars(cars, this.state.sorting) }, () => {
+                    this.setState({ loading: false });
+                })
+            }
+            else {
+                this.setState({ cars: this.sortCars(allCars, this.state.sorting) }, () => {
+                    this.setState({ loading: false });
+                });
+            }
+        });
+    }
 
-                    for (let i = 0; i < res.data.length; i++) {
-                        brandModel = res.data[i].brand + ' ' + res.data[i].model + ' ' + res.data[i].year;
-                        if (brandModel.toLocaleLowerCase().includes(searchInput.toLowerCase()))
-                            cars.push(res.data[i]);
-                    }
-                    return this.setState({ cars: this.sortCars(cars, this.state.sorting) });
-                }
-                else {
-                    return this.setState({ cars: this.sortCars(res.data, this.state.sorting) });
-                }
-            })
-            .then(res => {
-                this.setState({ loading: false });
-            })
-            .catch(err => console.log(err));
+    carsArrayFromOptbar = (cars) => {
+        document.getElementsByClassName("optbar")[0].style.height = "220px";
+        this.setState({ cars: this.sortCars(JSON.parse(cars), this.state.sorting), loading: true }, () => {
+            this.setState({ loading: false });
+        });
     }
 
     render() {
@@ -294,63 +237,17 @@ export default class Cars extends Component {
                             </select>
                             <p className="sorting__spec" onClick={this.onSpecClick}>Specify options &#9776;</p>
                         </div>
-                        <ul className="sidenav">
-                            <li className="sidenav__li">
-                                <p className="sidenav__element">Brand</p>
-                                <input className="sidenav__input" value={this.state.brand} list="brands" name="brand" placeholder="Choose" onChange={this.onChangeBrand}>
-                                </input>
-                                <datalist id="brands">
-                                    {this.Brands()}
-                                </datalist>
-                            </li>
-                            <li className="sidenav__li">
-                                <p className="sidenav__element">Models</p>
-                                <input className="sidenav__input" value={this.state.model} list="models" name="model" placeholder="Choose" onChange={this.onChangeModel}>
-                                </input>
-                                <datalist id="models">
-                                    {this.Models()}
-                                </datalist>
-                            </li>
-                            <li className="sidenav__li">
-                                <p className="sidenav__element">Class</p>
-                                <input className="sidenav__input" value={this.state.class} list="classes" name="class" placeholder="Choose" onChange={this.onChangeClass}>
-                                </input>
-                                <datalist id="classes">
-                                    <option value="Economy" />
-                                    <option value="Business" />
-                                    <option value="Premium" />
-                                </datalist>
-                            </li>
-                            <li className="sidenav__li">
-                                <p className="sidenav__element">Countries</p>
-                                <input className="sidenav__input" value={this.state.country} list="countries" name="country" placeholder="Choose" onChange={this.onChangeCountry}>
-                                </input>
-                                <datalist id="countries">
-                                    {this.Countries()}
-                                </datalist>
-                            </li>
-                            <li className="sidenav__li">
-                                <p className="sidenav__element">Year</p>
-                                <div className="sidenav__element__year">
-                                    <input type="number" className="sidenav__input__year" value={this.state.yearFrom} name="year_from" placeholder="From" onChange={this.onChangeYearFrom}>
-                                    </input>
-                                    <input type="number" className="sidenav__input__year" value={this.state.yearTo} name="year_to" placeholder="To" onChange={this.onChangeYearTo}>
-                                    </input>
-                                </div>
-                            </li>
-                            <li className="sidenav__li__submit">
-                                {/* <div className="sidenav__element__btn"> */}
-                                <input type="submit" value="Search" className="sidenav__button" onClick={this.onSearch} />
-                                <input type="submit" value="Clear" className="sidenav__button" onClick={this.onClear} />
-                                {/* </div> */}
-                            </li>
-                        </ul>
+
+                        {(this.state.brands.length) ?
+                            < Optbar callbackFromCars={this.carsArrayFromOptbar} allCars={this.state.allCars} brands={this.state.brands} countries={this.state.countries}/>
+                        : ''}
 
                         {this.state.loading ? '' :
-                            <div>{this.state.cars.length ?
-                                <CarList cars={this.state.cars} />
-                                : <h1 className="notfound">Sorry, nothing found(</h1>
-                            }</div>
+                            <div>
+                                {this.state.cars.length ?
+                                    <CarList cars={this.state.cars} />
+                                    : <h1 className="notfound">Sorry, nothing found(</h1>
+                                }</div>
                         }
                     </div>
                 </div>
