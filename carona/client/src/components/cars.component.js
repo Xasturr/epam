@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CarList from './car-list.component';
 import Optbar from './optbar.component';
+import Pagination from './pagination.component';
 import config from '../config/config';
 const url = config.url;
 
@@ -21,16 +22,16 @@ export default class Cars extends Component {
             loading: true,
             brand: '',
             model: '',
-            brands: [],
-            models: [],
             class: '',
             country: '',
-            countries: [],
             yearFrom: '',
             yearTo: '',
             sorting: 'Brand from A to Z',
             specs: 'close',
-            searchInput: ''
+            searchInput: '',
+            itemsOnPage: 3,
+            currPage: 1,
+            pagesAmount: ''
         }
     }
 
@@ -48,79 +49,45 @@ export default class Cars extends Component {
                     return 0;
                 });
 
-                this.setState({
-                    allCars: res.data,
-                    cars: res.data
-                });
+                let cars = [];
 
-                let countries = [];
-                let brands = [];
-
-                for (let i = 0; i < res.data.length; i++) {
-                    if (countries.indexOf(res.data[i].country) === -1)
-                        countries.push(res.data[i].country);
-                    if (brands.indexOf(res.data[i].brand) === -1)
-                        brands.push(res.data[i].brand);
+                for (let i = (this.state.currPage - 1) * this.state.itemsOnPage;
+                    i < this.state.currPage * this.state.itemsOnPage; i++) {
+                    cars.push(res.data[i]);
                 }
 
-                this.setState({ countries: countries });
-                this.setState({ brands: brands });
-                this.setState({ loading: false });
+                this.setState({
+                    allCars: res.data,
+                    cars: cars,
+                    pagesAmount: Math.ceil(res.data.length / this.state.itemsOnPage)
+                }, () => {
+                    this.setState({ loading: false });
+                });
             })
             .catch(err => {
                 console.log("An error occured in componentDidMount in cars.component\n", err);
             })
     }
 
-    Brands() {
-        let i = 0
-        return this.state.brands.map(brand => {
-            return (
-                <option key={i++} value={brand} />
-            )
-        })
-    }
-
-    Models() {
-        if (this.state.models.length === 0 || this.state.brand.length === 0)
-            return <option value="Please, choose brand correctly" />
-        else
-            return this.state.models.map(model => {
-                return (
-                    <option key={model} value={model} />
-                )
-            })
-    }
-
-    Countries() {
-        let i = 0
-        return this.state.countries.map(country => {
-            return (
-                <option key={i++} value={country} />
-            )
-        })
-    }
-
-    onChangeBrand(e) {
-        e.preventDefault();
-        const b = e.target.value;
-        this.setState({ brand: b });
-        if (b.length > 0) {
-            let models = [];
-            let allCars = this.state.allCars;
-            for (let i = 0; i < allCars.length; i++) {
-                if (allCars[i].brand.toLowerCase() === b.toLowerCase())
-                    models.push(allCars[i].model);
-            }
-            this.setState({ models: models });
-        }
-    }
-
     onChangeSorting(e) {
-        let cars = this.state.cars;
-        cars = this.sortCars(cars, e.target.value);
-        this.setState({ cars: cars })
-        this.setState({ sorting: e.target.value });
+        let cars = [];
+        let allCars = this.sortCars(this.state.allCars, e.target.value);
+        this.setState({
+            allCars: allCars,
+            currPage: 1,
+            sorting: e.target.value,
+        }, () => {
+            for (let i = (this.state.currPage - 1) * this.state.itemsOnPage;
+                i < this.state.currPage * this.state.itemsOnPage && i < this.state.allCars.length; i++) {
+                cars.push(allCars[i]);
+            }
+            this.setState({
+                cars: cars,
+                loading: true,
+            }, () => {
+                this.setState({ loading: false });
+            })
+        });
     }
 
     sortCars(cars, opt) {
@@ -175,38 +142,107 @@ export default class Cars extends Component {
     }
 
     onSearchInputChange(e) {
-        this.setState({ searchInput: e.target.value });
+        this.setState({
+            searchInput: e.target.value,
+            // brand: '',
+            // model: '',
+            // class: '',
+            // country: '',
+            // yearTo: '',
+            // yearFrom: ''
+        });
     }
 
     onSearchBtnClick(e) {
         let searchInput = this.state.searchInput;
-        const allCars = this.state.allCars;
-        this.setState({ loading: true }, () => {
-            if (searchInput) {
-                let cars = [];
-                let brandModel = '';
-                for (let i = 0; i < allCars.length; i++) {
-                    brandModel = allCars[i].brand + ' ' + allCars[i].model + ' ' + allCars[i].year;
-                    if (brandModel.toLocaleLowerCase().includes(searchInput.toLowerCase()))
-                        cars.push(allCars[i]);
-                }
-                this.setState({ cars: this.sortCars(cars, this.state.sorting) }, () => {
-                    this.setState({ loading: false });
+        this.setState({
+            loading: true,
+            currPage: 1
+        }, () => {
+            axios.get(url + '/cars')
+                .then(res => {
+                    let cars = [];
+                    res.data = this.sortCars(res.data, this.state.sorting);
+                    if (searchInput) {
+                        let brandModel = '';
+                        let allCars = [];
+                        for (let i = 0; i < res.data.length; i++) {
+                            brandModel = res.data[i].brand + ' ' + res.data[i].model + ' ' + res.data[i].year;
+                            if (brandModel.toLocaleLowerCase().includes(searchInput.toLowerCase())) {
+                                allCars.push(res.data[i]);
+                                if (cars.length < this.state.itemsOnPage)
+                                    cars.push(res.data[i]);
+                            }
+                        }
+                        this.setState({
+                            allCars: allCars,
+                            cars: cars,
+                            pagesAmount: Math.ceil(allCars.length / this.state.itemsOnPage)
+                        }, () => {
+                            this.setState({ loading: false });
+                        })
+                    }
+                    else {
+                        this.setState({
+                            loading: true,
+                            allCars: res.data
+                        }, () => {
+                            let cars = [];
+                            for (let i = 0;
+                                i < this.state.allCars.length && cars.length < this.state.itemsOnPage;
+                                i++) {
+                                cars.push(this.state.allCars[i]);
+                            }
+                            this.setState({
+                                cars: cars,
+                                pagesAmount: Math.ceil(this.state.allCars.length / this.state.itemsOnPage)
+                            }, () => {
+                                this.setState({ loading: false });
+                            });
+                        })
+                    }
                 })
-            }
-            else {
-                this.setState({ cars: this.sortCars(allCars, this.state.sorting) }, () => {
-                    this.setState({ loading: false });
-                });
-            }
+                .catch(err => console.log(err))
         });
     }
 
-    carsArrayFromOptbar = (cars) => {
+    carsArrayFromOptbar = (allCars) => {
         document.getElementsByClassName("optbar")[0].style.height = "220px";
-        this.setState({ cars: this.sortCars(JSON.parse(cars), this.state.sorting), loading: true }, () => {
+        document.getElementsByClassName("cars__input")[0].value = "";
+        allCars = this.sortCars(JSON.parse(allCars, this.state.sorting), this.state.sorting);
+        let cars = [];
+        for (let i = 0; i < allCars.length && cars.length < this.state.itemsOnPage; i++) {
+            cars.push(allCars[i]);
+        }
+        this.setState({
+            cars: cars,
+            allCars: allCars,
+            loading: true,
+            pagesAmount: Math.ceil(allCars.length / this.state.itemsOnPage),
+            currPage: 1,
+            searchInput: ''
+        }, () => {
             this.setState({ loading: false });
         });
+    }
+
+    onPageClick = (pageNum) => {
+        pageNum = parseInt(pageNum);
+        if (pageNum !== this.state.currPage) {
+            window.scrollTo(0, 0)
+            let cars = [];
+            for (let i = (pageNum - 1) * this.state.itemsOnPage;
+                i < pageNum * this.state.itemsOnPage && i < this.state.allCars.length; i++) {
+                cars.push(this.state.allCars[i]);
+            }
+            this.setState({
+                cars: cars,
+                currPage: pageNum,
+                loading: true
+            }, () => {
+                this.setState({ loading: false });
+            });
+        }
     }
 
     render() {
@@ -238,14 +274,18 @@ export default class Cars extends Component {
                             <p className="sorting__spec" onClick={this.onSpecClick}>Specify options &#9776;</p>
                         </div>
 
-                        {(this.state.brands.length) ?
-                            < Optbar callbackFromCars={this.carsArrayFromOptbar} allCars={this.state.allCars} brands={this.state.brands} countries={this.state.countries}/>
-                        : ''}
+                        {(this.state.allCars.length) ?
+                            < Optbar callbackFromCars={this.carsArrayFromOptbar} allCars={this.state.allCars} />
+                            : ''}
 
                         {this.state.loading ? '' :
                             <div>
                                 {this.state.cars.length ?
-                                    <CarList cars={this.state.cars} />
+                                    <div>
+                                        <CarList cars={this.state.cars} />
+                                        < Pagination onPageClick={this.onPageClick} currPage={this.state.currPage} pagesAmount={this.state.pagesAmount} />
+
+                                    </div>
                                     : <h1 className="notfound">Sorry, nothing found(</h1>
                                 }</div>
                         }

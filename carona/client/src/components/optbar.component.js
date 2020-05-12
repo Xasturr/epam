@@ -19,18 +19,32 @@ class Optbar extends Component {
         this.state = {
             allCars: this.props.allCars,
             brand: '',
-            brands: this.props.brands,
+            brands: [],
             model: '',
             models: [],
             class: '',
             country: '',
-            countries: this.props.countries,
+            countries: [],
             yearFrom: '',
-            yearTo: '',
+            yearTo: ''
         }
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        let countries = [];
+        let brands = [];
+        let allCars = this.state.allCars;
+
+        for (let i = 0; i < allCars.length; i++) {
+            if (countries.indexOf(allCars[i].country) === -1)
+                countries.push(allCars[i].country);
+            if (brands.indexOf(allCars[i].brand) === -1)
+                brands.push(allCars[i].brand);
+        }
+
+        this.setState({ countries: countries });
+        this.setState({ brands: brands });
+    }
 
     Brands() {
         let i = 0
