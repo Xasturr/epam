@@ -38,9 +38,9 @@ export default class Contacts extends Component {
                             <div id="map">
                                 <GoogleMap /><br />
                             </div>
-                            <p className="title_text">CONTACTS INFO</p>
+                            <p className="title_text"><span className="title_span">CONTACTS INFO</span></p>
                             <ContactList contacts={this.state.contacts} />
-                            <p className="title_text">OPENING HOURS</p>
+                            <p className="title_text"><span className="title_span">OPENING HOURS</span></p>
                             <div className="contact__opening-hours">
                                 <p className="textStyle">Mon-Fri : 08:00 - 22:00<br />Sat-Sun : 10:00 - 21:00</p>
                             </div>

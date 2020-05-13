@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import config from '../config/config';
-const url = config.url;
+const url = config.client;
 
 export default class Contacts extends Component {
 
@@ -18,10 +18,6 @@ export default class Contacts extends Component {
             price: this.props.car.price
         }
     }
-
-    // componentDidMount() {
-    //     document.title = this.state.brand + ' ' + this.state.model;
-    // }
 
     render() {
 

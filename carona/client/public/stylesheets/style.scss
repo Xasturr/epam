@@ -24,10 +24,13 @@ $input-height: 35px;
 }
 
 .horline {
-        border: 0.1px solid $text-color;
-        // margin-left: 100px;
-        // margin-right: 100px;
-        margin-top: 0px;
+        border: 0.5px solid $text-color;
+        margin-bottom: 10px;
+        margin-left: 40px;
+        margin-right: 40px;
+        // margin-top: 0px;
+        height: 0.1px;
+        color: $text-color;
 }
 
 .par {
@@ -195,8 +198,6 @@ $input-height: 35px;
 .image-cropper {
         display: -webkit-inline-box;
         box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.5);
-        // margin: 0px;
-        // padding: 0px;
         width: 120px;
         height: 120px;
         position: relative;
@@ -208,28 +209,24 @@ $input-height: 35px;
 }
 
 .title_text {
-        margin-bottom: 0px;
-        font-size: 30px;
+        background: $text-color;
+        height: 1px;
+        margin-top: 10px;
+        text-align: center;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 35px;
+        margin-bottom: 35px;
+}
+
+.title_span {
+        background-color: black;
         color: $text-color;
-        display: table;
-        white-space: nowrap;
-        margin-left: 80px;
-        margin-right: 80px;
-        &:before,
-        &:after {
-                border-top: 0.5px solid $text-color;
-                content: "";
-                display: table-cell;
-                position: relative;
-                top: 22px;
-                width: 45%;
-        }
-        &:before {
-                right: 1.5%;
-        }
-        &:after {
-                left: 1.5%;
-        }
+        padding: 10px;
+        position: relative;
+        top: -22px;
+        left: 20px;
+        font-size: 30px;
 }
 
 .optbar {
@@ -542,4 +539,61 @@ input[type="number"]::-webkit-inner-spin-button {
                 background-color: rgb(30, 30, 30);
                 border: solid 1px $text-color;
         }
+}
+
+#deleteTextId {
+        display: inline-block;
+}
+
+#deleteTextId:hover {
+        text-decoration-line: underline;
+        cursor: pointer;
+}
+
+.comment {
+        &__area {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                outline-width: 0px;
+                width: 100%;
+                height: 80px;
+                padding: 5px;
+                border-radius: 5px;
+                color: $text-color;
+                background-color: rgb(30, 30, 30);
+                margin-top: 50px;
+        }
+
+        &__first {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                outline-width: 0px;
+                width: 100%;
+                padding: 5px;
+                border-radius: 5px;
+                color: $text-color;
+                background-color: rgb(30, 30, 30);
+                border: 0.5px solid $text-color;
+                text-align: center;
+                margin-bottom: 10px;
+        }
+}
+
+.price {
+        margin-top: 40px;
+        display: block;
+}
+
+.order {
+        display: block;
+}
+
+.order:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #fff;
+}
+
+.info {
+        text-align: center;
 }

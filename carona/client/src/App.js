@@ -7,6 +7,7 @@ import Footer from './components/footer.component';
 import Home from './components/home.component';
 import Contacts from './components/contacts.component';
 import Cars from './components/cars.component';
+import CarPage from './components/car-page.component';
 
 export default class App extends Component {
 
@@ -18,6 +19,7 @@ export default class App extends Component {
           <Switch>
             <Route exaxt path="/home" component={Home} />
             <Route exaxt path="/contacts" component={Contacts} />
+            <Route exaxt path="/cars/:id" component={CarPage} />
             <Route exaxt path="/cars" component={Cars} />
           </Switch>
           <Footer />

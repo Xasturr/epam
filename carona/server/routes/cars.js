@@ -1,5 +1,7 @@
 const router = require('express').Router();
-let Car = require('../models/car.model');
+const Car = require('../models/car.model');
+const pmongo = require('promised-mongo');
+const ObjectId = pmongo.ObjectId;
 
 router.get('/', (req, res) => {
     Car.getAll()
@@ -38,6 +40,12 @@ router.post('/search', (req, res) => {
             res.status(200).json(carArray);
         })
         .catch(err => res.send(err))
+})
+
+router.put('/:id/deletecomment', (req, res) => {
+    Car.update(req.body.carId, { $pull: { 'commentsId': ObjectId(req.body.commentId) } })
+        .then(x => { res.status(202).send("Updated") })
+        .catch(err => { res.status(404).send(err) })
 })
 
 module.exports = router;

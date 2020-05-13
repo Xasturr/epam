@@ -25,7 +25,7 @@ class Pagination extends Component {
         let items = [];
 
         for (let i = 0; i < this.state.pagesAmount; i++) {
-            if (this.state.currPage == i + 1)
+            if (this.state.currPage === i + 1)
                 items.push(
                     <li onClick={this.onPageClick} key={i} className="pagination__curr" value={i + 1}>{i + 1}</li>
                 )

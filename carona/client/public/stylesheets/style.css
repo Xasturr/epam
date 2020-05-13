@@ -16,8 +16,12 @@
   min-height: 100vh; }
 
 .horline {
-  border: 0.1px solid #d2d2d2;
-  margin-top: 0px; }
+  border: 0.5px solid #d2d2d2;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  height: 0.1px;
+  color: #d2d2d2; }
 
 .par {
   margin-left: 2em; }
@@ -144,24 +148,23 @@
   border-width: 2px; }
 
 .title_text {
-  margin-bottom: 0px;
-  font-size: 30px;
+  background: #d2d2d2;
+  height: 1px;
+  margin-top: 10px;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 35px;
+  margin-bottom: 35px; }
+
+.title_span {
+  background-color: black;
   color: #d2d2d2;
-  display: table;
-  white-space: nowrap;
-  margin-left: 80px;
-  margin-right: 80px; }
-  .title_text:before, .title_text:after {
-    border-top: 0.5px solid #d2d2d2;
-    content: "";
-    display: table-cell;
-    position: relative;
-    top: 22px;
-    width: 45%; }
-  .title_text:before {
-    right: 1.5%; }
-  .title_text:after {
-    left: 1.5%; }
+  padding: 10px;
+  position: relative;
+  top: -22px;
+  left: 20px;
+  font-size: 30px; }
 
 .optbar {
   transition: 0.5s;
@@ -371,5 +374,49 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 10px 20px 10px 20px;
   background-color: #1e1e1e;
   border: solid 1px #d2d2d2; }
+
+#deleteTextId {
+  display: inline-block; }
+
+#deleteTextId:hover {
+  text-decoration-line: underline;
+  cursor: pointer; }
+
+.comment__area {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  outline-width: 0px;
+  width: 100%;
+  height: 80px;
+  padding: 5px;
+  border-radius: 5px;
+  color: #d2d2d2;
+  background-color: #1e1e1e;
+  margin-top: 50px; }
+.comment__first {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  outline-width: 0px;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  color: #d2d2d2;
+  background-color: #1e1e1e;
+  border: 0.5px solid #d2d2d2;
+  text-align: center;
+  margin-bottom: 10px; }
+
+.price {
+  margin-top: 40px;
+  display: block; }
+
+.order {
+  display: block; }
+
+.order:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #fff; }
+
+.info {
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

@@ -29,6 +29,14 @@ let CarSchema = mongoose.Schema({
     price: {
         type: String,
         required: true
+    },
+    commentsId: {
+        type: Array,
+        required: true
+    },
+    info: {
+        type: String, 
+        required: true
     }
 });
 
@@ -47,6 +55,10 @@ CarModel.compare = function (queryParam, carParam) {
         if (queryParam !== carParam)
             return false
     return true;
+}
+
+CarModel.update = function (id, updateInfo) {
+    return CarModel.updateOne({ _id: id }, updateInfo);
 }
 
 module.exports = mongoose.model('Car', CarSchema);

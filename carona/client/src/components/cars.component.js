@@ -144,12 +144,6 @@ export default class Cars extends Component {
     onSearchInputChange(e) {
         this.setState({
             searchInput: e.target.value,
-            // brand: '',
-            // model: '',
-            // class: '',
-            // country: '',
-            // yearTo: '',
-            // yearFrom: ''
         });
     }
 
