@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 4</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 class="heading">Зміна властивостей зображення</h1>
+        <img src="zaz.jpg" class="img" name="image" style="border: 4px solid; border-color: red;" alt="zaz">
+    
+        <form class="form" name="myForm">
+            <div class="change_size">
+                <h1 class="heading__change_size">Зміна розмірів</h1>
+    
+                <div class="size_change__width">
+                    <input class="input_width_const" disabled value="width">
+                    <input class="input_width" name="inputWidth">
+                </div>
+                <div class="size_change__height">
+                    <input class="input_height_const" disabled value="height">
+                    <input class="input_height" name="inputHeight">
+                </div>
+            </div>
+    
+            <div class="change_border">
+                <h1 class="heading__change_border">Зміна рамки</h1>
+                <div class="change_border__thickness">
+                    <input class="input_border_thickness_const" disabled value="thickness">
+                    <input class="input_border_thickness" name="inputThickness">
+                </div>
+                <div class="change_border__color">
+                    <input class="input_border_color_const" disabled value="color">
+                    <input class="input_border_color" name="inputColor">
+                </div>
+            </div>
+    
+            <div class="change_other">
+                <h1 class="heading__change_border">Додатково</h1>
+                <div class="change_other__text">
+                    <input class="input_other_text_const" disabled value="alt text">
+                    <input class="input_other_text" name="inputText" value="">
+                </div>
+            </div>
+    
+            <input type="submit" class="btn btn-primary" value="Submit" name="submit">
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
