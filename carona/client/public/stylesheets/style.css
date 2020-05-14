@@ -7,7 +7,8 @@
   font-size: 20px;
   white-space: pre-line;
   color: #d2d2d2;
-  display: table-cell; }
+  display: table-cell;
+  overflow-wrap: anywhere; }
 
 .wrapper {
   white-space: pre-line;
@@ -164,7 +165,8 @@
   position: relative;
   top: -22px;
   left: 20px;
-  font-size: 30px; }
+  font-size: 30px;
+  word-break: break-all; }
 
 .optbar {
   transition: 0.5s;
@@ -264,7 +266,7 @@
     outline: none; }
 
 .car-list__list {
-  display: -webkit-inline-box; }
+  width: 1200px; }
 .car-list__li {
   display: block;
   border-bottom: 0.5px solid #d2d2d2;
@@ -418,5 +420,84 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .info {
   text-align: center; }
+
+@media screen and (max-width: 1200px) {
+  .cars__input {
+    width: 500px; }
+
+  .car-list__list {
+    width: 575px; }
+  .car-list__info {
+    width: 200px; } }
+@media screen and (max-width: 900px) {
+  .cars__input {
+    width: 330px; }
+  .cars__content {
+    width: 500px; }
+  .cars__search {
+    width: 500px; }
+
+  .car-list__list {
+    width: 375px;
+    margin-right: 0px; }
+  .car-list__dark {
+    display: block; }
+  .car-list__info {
+    width: 100px;
+    text-align: center;
+    margin: 0px;
+    width: 100%; }
+    .car-list__info__subinfo {
+      text-align: center; }
+
+  .optbar {
+    width: auto; }
+    .optbar__input {
+      width: 100px; }
+
+  .contact__dark {
+    display: block; }
+  .contact__info {
+    word-break: break-all; } }
+@media screen and (max-width: 550px) {
+  .cars__input {
+    width: 200px; }
+  .cars__content {
+    width: 300px; }
+  .cars__search {
+    width: 300px; }
+
+  .sorting {
+    display: block;
+    text-align: center;
+    width: 300px; }
+    .sorting__select {
+      margin: 5px; }
+    .sorting__spec {
+      margin: 5px; }
+    .sorting__text {
+      width: 200px; }
+
+  .optbar {
+    width: 300px;
+    text-align: center;
+    display: block; }
+    .optbar__input {
+      width: 100px; }
+
+  .car-list__list {
+    width: 300px;
+    margin-right: 0px; }
+  .car-list__dark {
+    display: block;
+    margin: 0px;
+    padding: 0px; }
+  .car-list__info {
+    width: 100px;
+    text-align: center;
+    margin: 0px;
+    width: 100%; }
+    .car-list__info__subinfo {
+      text-align: center; } }
 
 /*# sourceMappingURL=style.css.map */

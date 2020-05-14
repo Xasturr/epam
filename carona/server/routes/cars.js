@@ -42,6 +42,11 @@ router.post('/search', (req, res) => {
         .catch(err => res.send(err))
 })
 
+router.post('/:id/order', (req, res) => {
+    console.log(req.body.number);
+    res.status(200).send(req.body.number);
+})
+
 router.put('/:id/deletecomment', (req, res) => {
     Car.update(req.body.carId, { $pull: { 'commentsId': ObjectId(req.body.commentId) } })
         .then(x => { res.status(202).send("Updated") })

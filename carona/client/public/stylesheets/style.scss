@@ -14,6 +14,7 @@ $input-height: 35px;
         white-space: pre-line;
         color: $text-color;
         display: table-cell;
+        overflow-wrap: anywhere;
 }
 
 .wrapper {
@@ -98,7 +99,6 @@ $input-height: 35px;
                 justify-self: center;
                 text-align: center;
                 margin-bottom: 0px;
-                // display: inline-block;
         }
 
         &__li {
@@ -227,39 +227,26 @@ $input-height: 35px;
         top: -22px;
         left: 20px;
         font-size: 30px;
+        word-break: break-all;
 }
 
 .optbar {
         transition: 0.5s;
         height: 0px; /* Full-height: remove this if you want "auto" height */
-        // min-width: 100vh;
         width: 800px;
-        // width: 700px; /* Set the width of the sidebar */
         z-index: 1;
         top: 0; /* Stay at the top */
         left: 0;
         text-align: center;
-        // background: rgb(30, 30, 30);
         overflow-x: hidden; /* Disable horizontal scroll */
         -ms-overflow-style: none;
-        // border-right-width: 0.5px;
-        // border-right-style: solid;
-        // border-right-color: $text-color;
-        // border-top-width: 0.5px;
-        // border-top-style: solid;
-        // border-top-color: $text-color;
-        // border-bottom-width: 0.5px;
-        // border-bottom-style: solid;
-        // border-bottom-color: $text-color;
         color: $text-color;
-        // margin-top: $input-height;
         margin-left: 30px;
 
         &__element {
                 margin: 5px;
                 &__year {
                         display: inline-flex;
-                        // width: 100px;
                 }
                 &__btn {
                         display: flex;
@@ -379,7 +366,8 @@ $input-height: 35px;
 
 .car-list {
         &__list {
-                display: -webkit-inline-box;
+                // display: -webkit-inline-box;
+                width: 1200px;
         }
 
         &__ul {
@@ -596,4 +584,166 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .info {
         text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+        .cars {
+                // display: -webkit-box;
+                // width: 100%;
+
+                &__input {
+                        // outline-width: 0px;
+                        width: 500px;
+                        // padding-left: 8px;
+                        // height: $input-height;
+                        // border-radius: 10px 0px 0px 10px;
+                }
+        }
+
+        .car-list {
+                &__list {
+                        // display: -webkit-inline-box;
+                        width: 575px;
+                }
+
+                &__info {
+                        width: 200px;
+                }
+        }
+}
+
+@media screen and (max-width: 900px) {
+        .cars {
+                // display: -webkit-box;
+                // width: 100%;
+
+                &__input {
+                        // outline-width: 0px;
+                        width: 330px;
+                        // padding-left: 8px;
+                        // height: $input-height;
+                        // border-radius: 10px 0px 0px 10px;
+                }
+
+                &__content {
+                        // display: grid;
+                        width: 500px;
+                }
+
+                &__search {
+                        width: 500px;
+                }
+        }
+
+        .car-list {
+                &__list {
+                        width: 375px;
+                        margin-right: 0px;
+                }
+
+                &__dark {
+                        display: block;
+                }
+
+                &__info {
+                        width: 100px;
+                        text-align: center;
+                        margin: 0px;
+                        width: 100%;
+
+                        &__subinfo {
+                                text-align: center;
+                        }
+                }
+        }
+
+        .optbar {
+                width: auto;
+
+                &__input {
+                        width: 100px;
+                }
+        }
+
+        .contact {
+                &__dark {
+                        display: block;
+                }
+
+                &__info {
+                        word-break: break-all;
+                }
+        }
+}
+
+@media screen and (max-width: 550px) {
+        .cars {
+                &__input {
+                        width: 200px;
+                }
+
+                &__content {
+                        width: 300px;
+                }
+
+                &__search {
+                        width: 300px;
+                }
+        }
+
+        .sorting {
+                display: block;
+                text-align: center;
+                width: 300px;
+
+                &__select {
+                        // margin-left: 0px;
+                        margin: 5px;
+                }
+
+                &__spec {
+                        // margin-left: 0px;
+                        margin: 5px;
+                }
+
+                &__text {
+                        width: 200px;
+                }
+        }
+
+        .optbar {
+                width: 300px;
+                text-align: center;
+                // margin-left: 50px;
+                display: block;
+
+                &__input {
+                        width: 100px;
+                }
+        }
+
+        .car-list {
+                &__list {
+                        // display: -webkit-inline-box;
+                        width: 300px;
+                        margin-right: 0px;
+                }
+
+                &__dark {
+                        display: block;
+                        margin: 0px;
+                        padding: 0px;
+                }
+
+                &__info {
+                        width: 100px;
+                        text-align: center;
+                        margin: 0px;
+                        width: 100%;
+
+                        &__subinfo {
+                                text-align: center;
+                        }
+                }
+        }
 }

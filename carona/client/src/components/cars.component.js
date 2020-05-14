@@ -278,7 +278,6 @@ export default class Cars extends Component {
                                     <div>
                                         <CarList cars={this.state.cars} />
                                         < Pagination onPageClick={this.onPageClick} currPage={this.state.currPage} pagesAmount={this.state.pagesAmount} />
-
                                     </div>
                                     : <h1 className="notfound">Sorry, nothing found(</h1>
                                 }</div>

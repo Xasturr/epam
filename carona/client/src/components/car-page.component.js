@@ -14,6 +14,8 @@ export default class CarPage extends Component {
         this.onSubmitComment = this.onSubmitComment.bind(this);
         this.onChangeComment = this.onChangeComment.bind(this);
         this.onChangeOpenModal = this.onChangeOpenModal.bind(this);
+        this.onChangeNumber = this.onChangeNumber.bind(this);
+        this.onConfirm = this.onConfirm.bind(this);
 
         this.state = {
             images: [],
@@ -23,6 +25,7 @@ export default class CarPage extends Component {
             price: '',
             commentsId: [],
             comment: '',
+            number: '',
             info: '',
             openModal: false,
             loading: true
@@ -113,6 +116,26 @@ export default class CarPage extends Component {
             this.setState({ openModal: true })
     }
 
+    onConfirm(e) {
+        this.setState({ openModal: false })
+
+        if (this.state.number.length >= 10 && this.state.number.length <= 12) {
+            const data = {
+                number: this.state.number
+            }
+    
+            axios.post(url + window.location.pathname + '/order', data)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => console.log(err))
+        }
+    }
+
+    onChangeNumber(e) {
+        this.setState({ number: e.target.value });
+    }
+
     render() {
 
         const carousel = (
@@ -158,12 +181,12 @@ export default class CarPage extends Component {
 
                 <Modal isOpen={this.state.openModal} className={"className"}>
                     <ModalHeader>Please, write down your phone number</ModalHeader>
-                        <ModalBody>
-                            We will contact with you in soon
-                            <input type="number" className="form-control" />
-                        </ModalBody>
+                    <ModalBody>
+                        We will contact with you in soon
+                            <input type="number" className="form-control" onChange={this.onChangeNumber} />
+                    </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.onDelete}>Confirm</Button>{' '}
+                        <Button color="primary" onClick={this.onConfirm}>Confirm</Button>{' '}
                         <Button color="secondary" onClick={this.onChangeOpenModal}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
