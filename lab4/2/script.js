@@ -120,7 +120,6 @@ function deleteBtnClick() {
         name = this.parentNode.childNodes[3].dataset.name;
     else 
         name = this.parentNode.childNodes[1].dataset.name;
-
     for (let i = 1; i < mainDiagram.childNodes.length; i++) {
         if (mainDiagram.childNodes[i].innerHTML == name) {
             mainDiagram.childNodes[i].remove();
