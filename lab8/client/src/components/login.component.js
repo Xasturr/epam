@@ -34,7 +34,6 @@ export default class Login extends Component {
 
         this.setState({ message: "Please, wait" });
         this.setState({ submitBtnDisabled: true });
-        this.setState({ forgotBtnDisabled: true });
 
         const user = {
             login: this.state.login,
@@ -81,21 +80,6 @@ export default class Login extends Component {
                 </div>
             )
         }
-        let forgotBtn = (
-            <input type="submit"
-                value="Forgot Password"
-                className="btn btn-dark"
-            />
-        )
-        if (this.state.forgotBtnDisabled) {
-            forgotBtn = (
-                <input type="submit"
-                    value="Forgot Password"
-                    className="btn btn-dark"
-                    disabled
-                />
-            )
-        }
 
         return (
             <div className="container">
@@ -123,11 +107,6 @@ export default class Login extends Component {
                         <p>{this.state.message}</p>
                     </div>
                     {submitBtn}
-                    <div className="form-group">
-                        <Link to={forgotPasswordUrl}>
-                            {forgotBtn}
-                        </Link>
-                    </div>
                 </form>
             </div>
         )
