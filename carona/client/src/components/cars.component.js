@@ -38,7 +38,7 @@ export default class Cars extends Component {
     componentDidMount() {
         document.title = "Cars";
 
-        axios.get(url + '/cars')
+        axios.get(url + '/cars' + this.props.location.search)
             .then(res => {
 
                 res.data.sort(function (a, b) {
@@ -52,7 +52,7 @@ export default class Cars extends Component {
                 let cars = [];
 
                 for (let i = (this.state.currPage - 1) * this.state.itemsOnPage;
-                    i < this.state.currPage * this.state.itemsOnPage; i++) {
+                    i < this.state.currPage * this.state.itemsOnPage && i < res.data.length; i++) {
                     cars.push(res.data[i]);
                 }
 

@@ -53,9 +53,9 @@ export default class Home extends Component {
         return (
             < div className="wrapper">
                 {carousel}
-                <p className="title_text"><span class="title_span">WHO WE ARE</span></p>
+                <p className="title_text"><span className="title_span">WHO WE ARE</span></p>
                 <div className="container">
-                    <p className="textStyle">
+                    <div className="textStyle">
                         <div className="info">
                             <span className="par">Would</span> you like to enjoy your holidays, and not even think about taxi prices or bus
                             schedules? Isn’t it cool to find the rental car right after your arrival in front
@@ -80,7 +80,7 @@ export default class Home extends Component {
                             insured and in running order, with a full tank and a 24-hour technical support
                             service</b>. Moreover, the cars are <b>not older than 4 years old</b>.
                         </div>
-                    </p>
+                    </div>
                 </div>
             </div >
         )

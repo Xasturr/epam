@@ -41,7 +41,6 @@ $input-height: 35px;
 #map {
         height: 600px;
         margin-bottom: 10px;
-        // background-color: aqua;
 }
 
 .uppernav {
@@ -310,9 +309,6 @@ $input-height: 35px;
 
         &__li {
                 display: inline-block;
-
-                &__submit {
-                }
         }
 }
 
@@ -339,9 +335,6 @@ $input-height: 35px;
                 // width: 900px;
                 display: -webkit-inline-box;
                 margin-left: 40px;
-
-                &__el {
-                }
         }
 
         &__content {
@@ -368,10 +361,6 @@ $input-height: 35px;
         &__list {
                 // display: -webkit-inline-box;
                 width: 1200px;
-        }
-
-        &__ul {
-                // display: grid;
         }
 
         &__li {
@@ -746,4 +735,58 @@ input[type="number"]::-webkit-inner-spin-button {
                         }
                 }
         }
+}
+
+.dropbtn {
+        background-color: black;
+        border: none;
+        text-decoration: none;
+        font-size: 20px;
+        line-height: $navbar-height;
+        margin-right: 16px;
+        margin-left: 10px;
+        color: white;
+}
+
+.dropbtn:focus {
+        outline-width: 0px;
+}
+
+.dropdown {
+        position: relative;
+        display: inline-block;
+        z-index: 2;
+}
+
+.dropdown:hover .dropdown-content {
+        display: block;
+}
+
+.dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+}
+
+.dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+}
+
+.dropdown-content a:hover {
+        background-color: #ddd;
+}
+
+.dropdown-link {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.dropdown-link:hover {
+        color: black;
 }

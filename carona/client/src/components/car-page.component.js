@@ -79,7 +79,7 @@ export default class CarPage extends Component {
                 }
                 axios.post(url + '/comments/create', data)
                     .then(x => {
-                        document.getElementsByClassName("comment__area").value = '';
+                        document.getElementsByClassName("comment__area")[0].value = '';
                         let commentsId = this.state.commentsId;
                         commentsId.push(x.data);
 

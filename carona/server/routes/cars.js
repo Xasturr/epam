@@ -4,8 +4,25 @@ const pmongo = require('promised-mongo');
 const ObjectId = pmongo.ObjectId;
 
 router.get('/', (req, res) => {
+    const q = req.query.class;
+    console.log(q);
+    console.log('-----------------------------------------------');
     Car.getAll()
-        .then(x => res.status(200).json(x))
+        .then(x => {
+            if (q) {
+                let cars = [];
+                for (let i = 0; i < x.length; i++) {
+                    const car = x[i];
+                    if (!Car.compare(q, car.class))
+                        continue;
+                    cars.push(car);
+                }
+                console.log(cars);
+                res.status(200).json(cars);
+            }
+            else
+                res.status(200).json(x);
+        })
         .catch(err => res.send(err));
 })
 
@@ -43,7 +60,6 @@ router.post('/search', (req, res) => {
 })
 
 router.post('/:id/order', (req, res) => {
-    console.log(req.body.number);
     res.status(200).send(req.body.number);
 })
 
