@@ -67,7 +67,7 @@ export default class Comment extends Component {
                     alt='ava'
                 />
                 <div className="media-body p-2 shadow-sm rounded border" id="asd" style={bgStyle}>
-                    <small className="float-right text-muted">{this.state.createdAt.slice(0, this.state.createdAt.length - 24)}</small>
+                    <small className="float-right text-muted">{this.state.createdAt.slice(0, this.state.createdAt.length - 51)}</small>
                     <h6 className="textStyle">{this.state.fullname}</h6>
                     <br />
                     <p className="textStyle">{this.state.comment}</p>
